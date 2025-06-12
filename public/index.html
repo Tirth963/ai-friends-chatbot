@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Friends</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- <h1 id="desktopTitle" class="main-title">Mochi – your bestie 💖</h1> -->
+
+    <!-- New -->
+
+    <div id="personaName" class="persona-tag">Your Bestie</div>
+    <!-- New -->
+
+    <div class="container">
+      <!-- Back Button -->
+      <button class="back-button" id="backButton" onclick="toggleFriendList()">
+        &#60;
+      </button>
+
+      <!-- Chat Header (for mobile) -->
+      <div class="chat-header" id="chatHeader">
+        <div class="mobile-avatar" id="mobileAvatarContainer">
+          <div class="default-avatar">T</div>
+        </div>
+        <div class="chat-title" id="mobileChatTitle">Your bestie 💖</div>
+      </div>
+
+      <!-- Friend List Screen -->
+      <div class="friend-list" id="friendList" style="display: none">
+        <div class="friend" onclick="selectFriend('wanko')">
+          <div class="friend-avatar" data-model="wanko">
+            🐶 Moko – The Cheer Pup
+          </div>
+          <div class="friend-description">
+            Loyal, cheerful golden retriever energy! Always ready to wag and
+            cheer you up 🐾
+          </div>
+        </div>
+
+        <div class="friend" onclick="selectFriend('shizuku')">
+          <div class="friend-avatar" data-model="shizuku">
+            🌸 Hina – The Comforter
+          </div>
+          <div class="friend-description">
+            Gentle, nurturing big-sis vibes. Perfect for warm tea chats and
+            heartfelt support ☕
+          </div>
+        </div>
+
+        <div class="friend" onclick="selectFriend('miku')">
+          <div class="friend-avatar" data-model="miku">
+            🎤 Zaza – The Hype Gremlin
+          </div>
+          <div class="friend-description">
+            Chaotic Gen Z queen with high energy! Meme lord, slay master, and
+            certified tea spiller ☕🔥
+          </div>
+        </div>
+
+        <div class="friend" onclick="selectFriend('z16')">
+          <div class="friend-avatar" data-model="z16">
+            🤖 Byte – The Glitch Wiz
+          </div>
+          <div class="friend-description">
+            Analytical, clever, and a little quirky. Your tech-savvy BFF with
+            all the fun facts 💾
+          </div>
+        </div>
+
+        <div class="friend" onclick="selectFriend('hijiki')">
+          <div class="friend-avatar" data-model="hijiki">
+            🐱 Nyoro – The Feral Flirt
+          </div>
+          <div class="friend-description">
+            Moody, sarcastic, and secretly soft. Will tease you to bits but
+            secretly adores you 🙃 meow~
+          </div>
+        </div>
+
+        <div class="friend" onclick="selectFriend('tororo')">
+          <div class="friend-avatar" data-model="tororo">
+            🌙 Lumi – The Dream Sage
+          </div>
+          <div class="friend-description">
+            Quiet, wise, and deeply validating. Whispers calm in poetic words
+            under starry skies 💫
+          </div>
+        </div>
+      </div>
+
+      <!-- Avatar + Chat -->
+      <div class="avatar-container" id="avatarContainer">
+        <div id="live2d-placeholder"></div>
+      </div>
+
+      <div class="chatbox" id="chatbox">
+        <div id="messages"></div>
+        <div class="input-area">
+          <input
+            type="text"
+            id="userInput"
+            placeholder="Hey there bestie! 💖"
+          />
+          <button id="send" onclick="sendMessage()">💌</button>
+          <button onclick="clearChat()">🗑️</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="copyright-footer">
+      This content uses sample data owned and copyrighted by Live2D Inc.
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/live2d-widget@3.1.4/lib/L2Dwidget.min.js"></script>
+  </body>
+</html>
