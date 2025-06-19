@@ -5,15 +5,15 @@ let isModelLoading = false;
 // Updated personas with better color schemes
 const personas = {
   wanko: {
-    name: "Moko 🐶",
+    name: "Moko",
     title: "The Cheer Pup",
     backgroundColor: "#FFF8E7", // Warm cream
-    containerColor: "#FFFFFF",
+    containerColor: "#c8fdec",
     chatboxColor: "#FFFBF0",
     placeholder: "Got a tail to tell? 🐾",
   },
   shizuku: {
-    name: "Hina 🌸",
+    name: "Hina",
     title: "The Comforter",
     backgroundColor: "#FDF2F8", // Soft rose
     containerColor: "#FFFFFF",
@@ -21,7 +21,7 @@ const personas = {
     placeholder: "What's on your heart today, love? ☕",
   },
   miku: {
-    name: "Zaza 🎤",
+    name: "Zaza",
     title: "The Hype Gremlin",
     backgroundColor: "#EFF6FF", // Light blue
     containerColor: "#FFFFFF",
@@ -29,7 +29,7 @@ const personas = {
     placeholder: "Drop the tea or just scream into the void 💅🔥",
   },
   z16: {
-    name: "Byte 🤖",
+    name: "Byte",
     title: "The Glitch Wiz",
     backgroundColor: "#F0FDF4", // Mint green
     containerColor: "#FFFFFF",
@@ -37,7 +37,7 @@ const personas = {
     placeholder: "Got a bug or a brain glitch? I'm on it 💾",
   },
   hijiki: {
-    name: "Nyoro 🐱",
+    name: "Nyoro",
     title: "The Feral Flirt",
     backgroundColor: "#FAF5FF", // Lavender
     containerColor: "#FFFFFF",
@@ -45,7 +45,7 @@ const personas = {
     placeholder: "You again? …Not like I missed you or anything 🙄",
   },
   tororo: {
-    name: "Lumi 🌙",
+    name: "Lumi",
     title: "The Dream Sage",
     backgroundColor: "#F8FAFC", // Moonlight gray
     containerColor: "#FFFFFF",
@@ -54,7 +54,7 @@ const personas = {
   },
 };
 
-// Friend List toggle
+
 function toggleFriendList() {
   const friendList = document.getElementById("friendList");
   const chatbox = document.getElementById("chatbox");
@@ -64,14 +64,20 @@ function toggleFriendList() {
   const personaName = document.getElementById("personaName");
 
   if (friendList.style.display === "none") {
+    // Show friend list view
     friendList.style.display = "flex";
     chatbox.style.display = "none";
     avatar.style.display = "none";
 
     if (window.innerWidth > 785) personaName.innerText = "Your AI Friends";
     if (window.innerWidth <= 785) title.innerText = "Your AI Friends";
-    backBtn.style.display = "block";
+    backBtn.style.display = "none";
+    // Delay to avoid layout flicker, then refresh
+    setTimeout(() => {
+      location.reload(); // 💥 Refreshes the entire page
+    }, 100);
   } else {
+    // Back to chat view
     friendList.style.display = "none";
     chatbox.style.display = "flex";
     avatar.style.display = "";
@@ -82,6 +88,7 @@ function toggleFriendList() {
     if (window.innerWidth <= 785) {
       title.innerText = personas[currentModel].name;
     }
+
     backBtn.style.display = "block";
   }
 }
@@ -140,7 +147,7 @@ async function selectFriend(modelKey) {
     const friends = document.querySelectorAll(".friend");
     friends.forEach((friend) => friend.classList.remove("selected"));
     const selectedFriend = document.querySelector(
-      `.friend-avatar[data-model="${modelKey}"]`,
+      `.friend-avatar[data-model="${modelKey}"]`
     )?.parentNode;
     if (selectedFriend) selectedFriend.classList.add("selected");
 
@@ -169,12 +176,12 @@ async function selectFriend(modelKey) {
 function updateTheme(persona) {
   document.body.style.backgroundColor = persona.backgroundColor;
 
-  // const container = document.querySelector(".container");
+  const container = document.querySelector(".container");
   const chatbox = document.querySelector(".chatbox");
 
-  // if (container) {
-  //   container.style.backgroundColor = persona.containerColor;
-  // }
+  if (container) {
+    container.style.backgroundColor = persona.containerColor;
+  }
 
   if (chatbox) {
     chatbox.style.backgroundColor = persona.chatboxColor;
@@ -319,7 +326,7 @@ function initializePage() {
 
   if (window.innerWidth > 785) personaName.innerText = "Your AI Friends";
   if (window.innerWidth <= 785) title.innerText = "Your AI Friends";
-  backBtn.style.display = "block";
+  backBtn.style.display = "none";
 }
 
 // Page initialization
