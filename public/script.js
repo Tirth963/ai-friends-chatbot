@@ -205,6 +205,7 @@ function initLive2D(jsonPath) {
 }
 
 window.addEventListener("resize", () => {
+  setTimeout(positionAvatar, 200);
   if (widget) {
     const widgetEl = document.getElementById("live2d-widget");
     if (!widgetEl) return;
@@ -228,7 +229,7 @@ window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("chatbox").style.display = "none";
   document.getElementById("avatarContainer").style.display = "none";
   document.getElementById("backButton").style.display = "none";
-
+  setTimeout(positionAvatar, 500);
   const userInput = document.getElementById("userInput");
   if (userInput) {
     userInput.addEventListener("keypress", (e) => {
@@ -292,5 +293,34 @@ function clearChat() {
   document.getElementById("messages").innerHTML = "";
 }
 
+
+function positionAvatar() {
+  const widgetEl = document.getElementById("live2d-widget");
+  const canvas = widgetEl?.querySelector("canvas");
+  if (!widgetEl) return;
+
+  if (window.innerWidth <= 785) {
+    widgetEl.style.width = "60px";
+    widgetEl.style.height = "60px";
+    widgetEl.style.position = "static";
+    widgetEl.style.pointerEvents = "none";
+    if (canvas) {
+      canvas.style.borderRadius = "50%";
+      canvas.style.objectFit = "cover";
+    }
+    document.getElementById("mobileAvatarContainer").innerHTML = "";
+    document.getElementById("mobileAvatarContainer").appendChild(widgetEl);
+  } else {
+    widgetEl.style.width = "100%";
+    widgetEl.style.height = "100%";
+    widgetEl.style.position = "static";
+    widgetEl.style.pointerEvents = "none";
+    document.getElementById("avatarContainer").innerHTML = "";
+    document.getElementById("avatarContainer").appendChild(widgetEl);
+  }
+}
+
+
 document.addEventListener("touchstart", () => {}, { passive: true });
 document.addEventListener("touchmove", () => {}, { passive: true });
+
