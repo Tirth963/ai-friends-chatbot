@@ -1,7 +1,4 @@
-/* :root {
-  --bubble-user: #f9e79f;
-  --bubble-bot: #fffbea;
-} */
+
 :root {
   --bubble-user: #f9e79f;
   --bubble-bot: #fffbea;
@@ -20,8 +17,6 @@ body {
   flex-direction: column;
   margin: 0;
   padding: 5vh 4vw;
-  /* background-color: #fff7fc; */
-  /*font-family: 'Comic Sans MS', sans-serif; */
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   font-family: 'Comic Sans MS', sans-serif;
   justify-content: center;
@@ -29,7 +24,6 @@ body {
   height: 100vh;
   box-sizing: border-box;
   overflow-x: hidden;
-  /* transition: background-color 0.5s, color 0.5s; */
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
 }
@@ -61,9 +55,6 @@ body::before {
   display: flex;
   align-items: stretch;
   justify-content: center;
-  /* background: white;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1); */
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   border-radius: 20px;
@@ -73,7 +64,6 @@ body::before {
   margin: 0 auto;
   position: relative;
   transition: background-color 0.4s;
-  /* transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); */
   border: 1px solid rgba(255, 255, 255, 0.2);
   z-index: 1;
 }
@@ -291,10 +281,6 @@ button:hover {
   box-shadow: 0 4px 12px rgba(255, 105, 180, 0.1);
 }
 
-/* @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-} */
 @keyframes slideInRight {
   from { opacity: 0; transform: translateX(30px) translateY(10px); }
   to { opacity: 1; transform: translateX(0) translateY(0); }
@@ -305,13 +291,6 @@ button:hover {
   to { opacity: 1; transform: translateX(0) translateY(0); }
 }
 .chat-header {
-  /* display: none;
-  align-items: center;
-  padding: 10px;
-  background-color: #ffe0f0;
-  width: 100%;
-  gap: 10px;
-  box-sizing: border-box; */
   display: none;
   align-items: center;
   padding: 16px 20px;
@@ -325,9 +304,6 @@ button:hover {
 
 
 .chat-title {
-  /* font-size: 1.1em;
-  font-weight: bold;
-  color: #ff69b4; */
   font-size: 1.2em;
   font-weight: 700;
   color: white;
@@ -438,7 +414,6 @@ button:hover {
   z-index: 3;
   backdrop-filter: blur(20px);
   gap: 5px;
-  /* padding-top: 80px; */
 }
 
 .friend {
@@ -561,14 +536,6 @@ button:hover {
   }
 
   .container {
-    /* flex-direction: column;
-    width: 90%;
-    height: 90%;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    overflow: hidden;
-    margin-bottom: 15%;
-    margin-top: 10% */
     flex-direction: column;
     width: 90%;
     height: 85%;
@@ -635,9 +602,6 @@ button:hover {
     font-size: 0.95em;
   }
 
-  /* #send{
-    display: none;
-  } */
 
   button {
     font-size: 0.95em;
@@ -663,7 +627,6 @@ button:hover {
   }
 
   .friend-list {
-    /* padding-top: 60px; */
     width: 100% !important;
   }
 
