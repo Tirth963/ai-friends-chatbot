@@ -113,11 +113,12 @@ function destroyCurrentWidget() {
 }
 
 // Load new Live2D model with better error handling
+
 async function selectFriend(modelKey) {
-  if (isModelLoading) {
-    console.log("Model already loading, please wait...");
-    return;
-  }
+  if (isModelLoading) return;
+
+  const loadingOverlay = document.getElementById("loadingOverlay");
+  loadingOverlay.classList.remove("hidden");
 
   const models = {
     wanko: "./models/wanko/wanko.model.json",
@@ -130,47 +131,40 @@ async function selectFriend(modelKey) {
 
   if (!models[modelKey]) {
     console.error("Model not found:", modelKey);
+    loadingOverlay.classList.add("hidden");
     return;
   }
 
   isModelLoading = true;
-  console.log("Loading model:", modelKey);
 
   try {
-    // Complete cleanup of existing widget
     await destroyCurrentWidget();
-
-    // Update current model
     currentModel = modelKey;
 
-    // Update friend selection UI
-    const friends = document.querySelectorAll(".friend");
-    friends.forEach((friend) => friend.classList.remove("selected"));
-    const selectedFriend = document.querySelector(
-      `.friend-avatar[data-model="${modelKey}"]`
-    )?.parentNode;
-    if (selectedFriend) selectedFriend.classList.add("selected");
+    // Update selected friend
+    document.querySelectorAll(".friend").forEach(f => f.classList.remove("selected"));
+    const selected = document.querySelector(`.friend-avatar[data-model="${modelKey}"]`)?.parentNode;
+    if (selected) selected.classList.add("selected");
 
-    // Update UI with persona metadata
     const persona = personas[modelKey];
     updateTheme(persona);
-
     document.getElementById("personaName").textContent = persona.name;
     document.getElementById("userInput").placeholder = persona.placeholder;
     document.getElementById("mobileChatTitle").textContent = persona.name;
 
-    // Load new model
     await initLive2D(models[modelKey]);
 
-    // Clear chat and return to chat view
     clearChat();
     toggleFriendList();
   } catch (error) {
     console.error("Error loading model:", error);
   } finally {
     isModelLoading = false;
+    loadingOverlay.classList.add("hidden");
   }
 }
+
+
 
 // Update theme colors
 function updateTheme(persona) {
