@@ -732,3 +732,24 @@ body, .container, .avatar-container, .chatbox, .persona-tag {
 .hidden {
   display: none !important;
 }
+
+
+.friend-avatar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.friend-avatar .avatar-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffb3d6;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.friend-avatar .avatar-icon:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
